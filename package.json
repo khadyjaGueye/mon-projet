@@ -2,9 +2,9 @@
   "name": "mon-projet",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
+
     "start": "ng serve",
-    "build": "npx ng build",
+    "build":"ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:mon-projet": "node dist/mon-projet/server/server.mjs"
