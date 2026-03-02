@@ -1,37 +1,63 @@
 <header class="w-full">
   <nav class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
     <div class="container mx-auto flex items-center justify-between py-4 px-4">
-      <a class="flex items-center text-xl font-bold text-blue-600" href="#">
-      <img src="assets/images/logo1.png" alt="Logo" class="h-10 w-auto"> <!-- Image réduite -->
-      <span class="ml-2 text-[#864040]">Momo Onglerie</span>
-    </a>
 
-      <button class="lg:hidden">
+      <!-- Logo -->
+      <a class="flex items-center text-xl font-bold text-blue-600" href="#">
+        <img src="assets/images/logo1.png" alt="Logo" class="h-10 w-auto">
+        <span class="ml-2 text-[#864040]">Momo Onglerie</span>
+      </a>
+
+      <!-- Bouton mobile -->
+      <button class="lg:hidden text-[#864040]" (click)="toggleMenu()">
         <span class="material-icons">menu</span>
       </button>
 
+      <!-- Menu Desktop -->
       <ul class="hidden lg:flex items-center space-x-6">
         <li><a class="font-semibold text-[#864040] hover:text-[#9e6666]" href="#services">Services</a></li>
         <li><a class="font-semibold text-[#864040] hover:text-[#9e6666]" href="#horaires">Horaires</a></li>
         <li><a class="font-semibold text-[#864040] hover:text-[#9e6666]" href="#contact">Contact</a></li>
         <li>
           <a href="https://wa.me/221770000000"
-            class="bg-[#864040] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#9e6666]" target="_blank">
+            class="bg-[#864040] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#9e6666]"
+            target="_blank">
             Réserver via WhatsApp
           </a>
         </li>
       </ul>
     </div>
+
+    <!-- Menu Mobile -->
+    <div *ngIf="isMenuOpen" class="lg:hidden bg-white shadow-md">
+      <ul class="flex flex-col items-center py-4 space-y-4">
+        <li><a class="font-semibold text-[#864040]" href="#services" (click)="toggleMenu()">Services</a></li>
+        <li><a class="font-semibold text-[#864040]" href="#horaires" (click)="toggleMenu()">Horaires</a></li>
+        <li><a class="font-semibold text-[#864040]" href="#contact" (click)="toggleMenu()">Contact</a></li>
+        <li>
+          <a href="https://wa.me/221770000000"
+            class="bg-[#864040] text-white px-4 py-2 rounded-lg font-semibold"
+            target="_blank">
+            Réserver via WhatsApp
+          </a>
+        </li>
+      </ul>
+    </div>
+
   </nav>
 
+  <!-- Hero -->
   <section class="h-[90vh] bg-cover bg-center flex items-center justify-center"
     style="background-image: url('assets/images/img111.jpg');">
-    <div class="text-center">
-      <h1 class="text-white text-4xl font-bold">Relaxation & Bien-être</h1>
-      <p class="text-white/80 text-lg mt-2">
+    <div class="text-center px-4">
+      <h1 class="text-white text-3xl md:text-4xl font-bold">
+        Relaxation & Bien-être
+      </h1>
+      <p class="text-white/80 text-base md:text-lg mt-2">
         Découvrez nos soins professionnels pour un moment de détente unique.
       </p>
-      <a href="#services" class="bg-white text-gray-800 px-6 py-2 mt-4 inline-block font-semibold rounded-lg">
+      <a href="#services"
+        class="bg-white text-gray-800 px-6 py-2 mt-4 inline-block font-semibold rounded-lg">
         Découvrir les services
       </a>
     </div>

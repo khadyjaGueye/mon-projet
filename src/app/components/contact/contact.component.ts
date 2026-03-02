@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
- phone = '+221XXXXXXXXX';
+ phone = '+221784611310';
 
   sendWhatsApp() {
     const message = 'Bonjour, je souhaite prendre un rendez-vous au spa';

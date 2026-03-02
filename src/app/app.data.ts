@@ -1,11 +1,11 @@
 export const HORAIRES = [
-  { day: 'Lundi', open: '09:00', close: '18:00' },
-  { day: 'Mardi', open: '09:00', close: '18:00' },
-  { day: 'Mercredi', open: '09:00', close: '18:00' },
-  { day: 'Jeudi', open: '09:00', close: '18:00' },
-  { day: 'Vendredi', open: '09:00', close: '20:00' },
+  { day: 'Lundi', open: '10:00', close: '20:00' },
+  { day: 'Mardi', open: '10:00', close: '20:00' },
+  { day: 'Mercredi', open: '10:00', close: '20:00' },
+  { day: 'Jeudi', open: '10:00', close: '20:00' },
+  { day: 'Vendredi', open: '10:00', close: '20:00' },
   { day: 'Samedi', open: '10:00', close: '20:00' },
-  { day: 'Dimanche', open: 'Fermé', close: 'Fermé' },
+  { day: 'Dimanche', open: '10:00', close: '20:00' },
 ];
 
 export const SERVICES = [
