@@ -14,7 +14,7 @@ import { ServiceComponent } from "../service/service.component";
 })
 export class DashbordComponent implements OnInit{
 
-  display: string = 'dashbord';
+  display: string = 'service';
   sidebarOpen: boolean = false;
 
   constructor(){}
