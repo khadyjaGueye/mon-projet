@@ -1,0 +1,50 @@
+.bg-light-custom{
+    background: var(--background-color);
+}
+
+.text-color{
+    color: var(--primary-color);
+}
+
+.horaire-card{
+    border-radius:16px;
+    transition:all .35s ease;
+    cursor:pointer;
+}
+
+.horaire-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(134,64,64,.15)!important;
+}
+
+.icon-circle{
+    width:70px;
+    height:70px;
+    margin:auto;
+    border-radius:50%;
+    background:rgba(134,64,64,.08);
+    color:var(--primary-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.card-body p{
+    color:var(--text-light);
+}
+
+.card-body strong{
+    color:var(--primary-dark);
+}
+
+hr{
+    border-color:var(--beige-sable-color);
+}
+
+@media(max-width:768px){
+
+    .horaire-card{
+        margin-bottom:10px;
+    }
+
+}

@@ -1,0 +1,98 @@
+<!-- Loader global -->
+<div *ngIf="isLoading" class="global-loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+  </div>
+  
+  <div class="container-fluid mt-4">
+      <div class="d-flex justify-content-end">
+          <button class="btn btn-color" data-bs-toggle="modal" data-bs-target="#addServiceModal" >
+              <i class="bi bi-plus"></i> Ajouter
+          </button>
+      </div>
+  </div>
+  
+  <!-- Tableau Produits -->
+  <div class="card mt-5 shadow-sm">
+      <div class="card-header">Liste des services </div>
+      <div class="card-body">
+          <table class="table table-hover align-middle">
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Image</th>
+                      <th>Libellé</th>
+                      <th>Prix</th>
+                      <th>Stock</th>
+                      <th colspan="3">Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let service of services">
+                      <td>{{ service.id }}</td>
+                      <td><img [src]="service.image" width="40" height="40" class="img-thumbnail"></td>
+                      <td>{{ service.name }}</td>
+                      <td>{{ service.price }}</td>
+                      <td>{{ service.description }}</td>
+                      <td><i (click)="deleteService(service.id)" class="bi bi-trash-fill text-danger"></i></td>
+                      <td><i (click)="openModalService(service.id)" class="bi bi-pencil-square text-primary"
+                              data-bs-toggle="modal" data-bs-target="#productModalEdit"></i></td>
+                      <td><i (click)="showService(service.id)" class="bi bi-eye-fill text-success" data-bs-toggle="modal"
+                              data-bs-target="#productModal"></i></td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+  
+
+  <!-- Modale ajout product-->
+<div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="addServiceLabel">Ajouter un service</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <!-- Form -->
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="Name" class="form-label">Nom du service</label>
+                        <input type="text" formControlName="name" class="form-control" id="Name"
+                            placeholder="Entrez le nom du service">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Price" class="form-label">Prix</label>
+                        <input type="number" formControlName="price" class="form-control" id="tPrice"
+                            placeholder="Entrez le prix">
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="Description" class="form-label">Description</label>
+                        <input type="text" formControlName="description" class="form-control" id="Description"
+                            placeholder="Entrez la description">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Image" class="form-label">Image</label>
+                        <input type="file" (change)="onFileSelected($event)" formControlName="image"
+                            class="form-control" id="Image">
+                    </div>
+                </div>
+                <!-- Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-color" [disabled]="isSubmitting">
+                        <span *ngIf="!isSubmitting">Enregistrer</span>
+                        <span *ngIf="isSubmitting">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Enregistrement...
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

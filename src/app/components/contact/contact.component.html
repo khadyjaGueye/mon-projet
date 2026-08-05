@@ -1,13 +1,22 @@
-<section id="contact" class="py-20 bg-gray-50">
-  <div class="container mx-auto px-4 text-center">
-    <h2 class="mb-6 text-3xl font-bold text-gray-800">Contact & Réservation</h2>
-    <p class="mb-6 text-gray-600 text-lg">
-      Pour réserver un service, contactez-nous via WhatsApp :
-    </p>
-    <button (click)="sendWhatsApp()"
-            class="bg-[#864040] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#9e6666]">
-      Réserver via WhatsApp
-    </button>
-  </div>
-</section>
+<section id="contact" class="py-5 bg-light-custom">
 
+  <div class="container text-center">
+
+      <h2 class="display-6 fw-bold text-color mb-4">
+          Contact & Réservation
+      </h2>
+
+      <p class="lead text-muted mb-4">
+          Pour réserver un service ou obtenir plus d'informations,
+          contactez-nous directement via WhatsApp.
+      </p>
+
+      <button class="btn btn-color btn-lg px-4"
+              (click)="sendWhatsApp()">
+          <i class="bi bi-whatsapp me-2"></i>
+          Réserver via WhatsApp
+      </button>
+
+  </div>
+
+</section>

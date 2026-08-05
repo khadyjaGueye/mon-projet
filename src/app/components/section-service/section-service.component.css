@@ -1,0 +1,66 @@
+.bg-light-custom{
+    background: var(--background-color);
+}
+
+.text-color{
+    color: var(--primary-color);
+}
+
+/* Carte */
+
+.service-card{
+    border-radius:16px;
+    overflow:hidden;
+    transition:all .35s ease;
+}
+
+.service-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(134,64,64,.18)!important;
+}
+
+/* Image */
+
+.service-image{
+    height:250px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.service-card:hover .service-image{
+    transform:scale(1.05);
+}
+
+/* Prix */
+
+.price{
+    color:var(--primary-dark);
+}
+
+/* Bouton */
+
+.btn-color{
+    background:var(--primary-color);
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-color:hover{
+    background:var(--primary-dark);
+    color:#fff;
+    transform:translateY(-2px);
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+    .service-image{
+        height:220px;
+    }
+
+}

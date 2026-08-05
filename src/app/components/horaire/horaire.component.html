@@ -1,14 +1,55 @@
-<section id="horaires" class="py-20 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <h2 class="mb-10 text-3xl font-bold text-center text-[#864040]">Horaires d’ouverture</h2>
+<section id="horaires" class="py-5 bg-light-custom">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div *ngFor="let horaire of horaires"
-           class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center transform transition duration-500 hover:scale-105 hover:shadow-2xl">
-        <h3 class="text-xl font-semibold mb-2 text-[#864040]">{{ horaire.day }}</h3>
-        <p class="text-gray-700 mb-1"><span class="font-semibold">Ouvert :</span> {{ horaire.open }}</p>
-        <p class="text-gray-700"><span class="font-semibold">Fermé :</span> {{ horaire.close }}</p>
+  <div class="container">
+
+      <!-- Titre -->
+      <div class="text-center mb-5">
+          <h2 class="display-6 fw-bold text-color">
+              Horaires d'ouverture
+          </h2>
+          <p class="text-muted">
+              Nous vous accueillons tout au long de la semaine pour prendre soin de vous.
+          </p>
       </div>
-    </div>
+
+      <!-- Liste des horaires -->
+      <div class="row g-4">
+
+          <div class="col-lg-4 col-md-6"
+               *ngFor="let horaire of horaires">
+
+              <div class="card h-100 border-0 shadow-sm horaire-card">
+
+                  <div class="card-body text-center">
+
+                      <div class="icon-circle mb-3">
+                          <i class="bi bi-clock-history fs-3"></i>
+                      </div>
+
+                      <h4 class="fw-bold text-color">
+                          {{ horaire.day }}
+                      </h4>
+
+                      <hr>
+
+                      <p class="mb-2">
+                          <strong>Ouverture :</strong><br>
+                          {{ horaire.open }}
+                      </p>
+
+                      <p class="mb-0">
+                          <strong>Fermeture :</strong><br>
+                          {{ horaire.close }}
+                      </p>
+
+                  </div>
+
+              </div>
+
+          </div>
+
+      </div>
+
   </div>
+
 </section>

@@ -1,0 +1,133 @@
+.container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background-color);
+    padding: 20px;
+}
+
+.card-login {
+    display: flex;
+    width: 900px;
+    max-width: 100%;
+    background: var(--card-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(134, 64, 64, 0.15);
+}
+
+/* Partie formulaire */
+.left-panel {
+    flex: 1;
+    background: var(--white-color);
+    padding: 50px;
+}
+
+.left-panel h2 {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.left-panel p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+/* Partie droite */
+.right-panel {
+    flex: 1;
+    background: linear-gradient(
+        135deg,
+        var(--primary-dark),
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.right-panel h2,
+.right-panel h3 {
+    color: var(--gold-light);
+    font-weight: 700;
+}
+
+.right-panel p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 320px;
+    line-height: 1.6;
+}
+
+/* Logo */
+.logo {
+    width: 90px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    padding: 10px;
+}
+
+/* Bouton */
+.btn-custom {
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 600;
+    transition: all .3s ease;
+}
+
+.btn-custom:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(134, 64, 64, 0.3);
+}
+
+/* Champs de saisie */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid var(--beige-sable-color);
+    padding: 12px;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(134, 64, 64, 0.2);
+}
+
+/* Lien */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-login {
+        flex-direction: column;
+    }
+
+    .left-panel,
+    .right-panel {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .right-panel {
+        min-height: 250px;
+    }
+}

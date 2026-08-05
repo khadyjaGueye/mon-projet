@@ -1,0 +1,35 @@
+.bg-light-custom{
+    background: var(--background-color);
+}
+
+.text-color{
+    color: var(--primary-color);
+}
+
+.card{
+    border-radius:16px;
+    transition:.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 25px rgba(134,64,64,.15)!important;
+}
+
+.btn-color{
+    background:var(--primary-color);
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:10px 24px;
+    transition:.3s;
+}
+
+.btn-color:hover{
+    background:var(--primary-dark);
+    color:#fff;
+}
+
+iframe{
+    display:block;
+}

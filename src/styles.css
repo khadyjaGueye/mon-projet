@@ -1,4 +1,98 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+
+    /* ==========================
+       Couleurs principales
+    ========================== */
+
+    --primary-color: #864040;
+    /* Bordeaux principal */
+    --secondary-color: #A65A5A;
+    /* Bordeaux clair */
+    --primary-dark: #6E3333;
+    /* Survol boutons */
+    --primary-light: #B77A7A;
+    /* Version claire */
+
+    /* ==========================
+       Couleurs d'accent
+    ========================== */
+
+    --gold-color: #C8A45B;
+    /* Doré discret */
+    --gold-light: #E3C98C;
+
+    /* ==========================
+       Couleurs neutres
+    ========================== */
+
+    --white-color: #FFFFFF;
+    --background-color: #FAF7F5;
+    --card-color: #FFFFFF;
+
+    --gris-anthracite-color: #3F3A3A;
+    --gris-souris-color: #8C8585;
+
+    --beige-sable-color: #E8DDD8;
+    --taupe-clair: #C5B6AF;
+
+    /* ==========================
+       Couleurs complémentaires
+    ========================== */
+
+    --olive-color: #66785F;
+    --olive-light: #90A58A;
+
+    --soft-pink-color: #E7C6C6;
+    --rose-color: #D69B9B;
+
+    /* ==========================
+       Texte
+    ========================== */
+
+    --text-color: #2F2F2F;
+    --text-light: #666666;
+
+    /* ==========================
+       Etats
+    ========================== */
+
+    --success-color: #2E7D32;
+    --warning-color: #F9A825;
+    --danger-color: #C62828;
+    --info-color: #5C6BC0;
+
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-success {
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+
+.btn-warning {
+    background-color: var(--warning-color) !important;
+    border-color: var(--warning-color) !important;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+.btn-accent {
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.btn-soft-accent {
+    background-color: var(--soft-accent-color) !important;
+    border-color: var(--soft-accent-color) !important;
+}
