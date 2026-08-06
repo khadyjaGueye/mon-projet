@@ -4,11 +4,14 @@ import { adminGuard } from './core/guard/admin.guard.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { authGuard } from './core/guard/auth.guard.guard';
+import { ProfilComponent } from './pages/profil/profil.component';
 
 export const routes: Routes = [
 
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: "dashbord", component: DashbordComponent, canActivate: [adminGuard] },
+    { path: "dashbord", component: DashbordComponent, canActivate: [adminGuard], canDeactivate: [authGuard] },
+    { path: 'profil', component: ProfilComponent }
 ];

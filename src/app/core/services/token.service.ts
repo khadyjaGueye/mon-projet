@@ -35,8 +35,23 @@ export class TokenService {
     }
   }
 
+  // ✅ Vérifie si le token est encore valide
+  isTokenExpired(token: string | null): boolean {
+    if (!token) return true;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const expiry = payload.exp;
+      const now = Math.floor(Date.now() / 1000);
+      return expiry < now; // true si expiré
+    } catch (e) {
+      return true; // si erreur de parsing, considère comme expiré
+    }
+  }
+
   isLoggedIn(): boolean {
-    return !!this.getToken();
+    const token = this.getToken();
+    return !!token && !this.isTokenExpired(token);
   }
 
   getCurrentUser() {

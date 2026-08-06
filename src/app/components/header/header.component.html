@@ -7,76 +7,39 @@
         <img src="assets/images/logo1.png" alt="Logo" height="45">
         <span class="ms-2 text-color">Momo Onglerie</span>
       </a>
-      <!-- Bouton Mobile -->
-      <button class="navbar-toggler border-0" type="button" (click)="toggleMenu()">
-        <i class="bi bi-list fs-2 text-color"></i>
-      </button>
+
       <!-- Menu Desktop -->
       <div class="collapse navbar-collapse justify-content-end d-none d-lg-flex">
         <ul class="navbar-nav align-items-center">
-          <li class="nav-item">
-            <a class="nav-link fw-semibold text-color" href="#services">
-              Services
-            </a>
-          </li>
+          <li class="nav-item"><a class="nav-link fw-semibold text-color" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold text-color" href="#horaires">Horaires</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold text-color" href="#contact">Contact</a></li>
 
-          <li class="nav-item">
-            <a class="nav-link fw-semibold text-color" href="#horaires">
-              Horaires
-            </a>
-          </li>
+          <!-- ✅ Condition -->
+          <ng-container *ngIf="!isLoggedIn; else loggedInBlock">
+            <li class="nav-item ms-3">
+              <a routerLink="/login" class="btn btn-color px-4">Connexion</a>
+            </li>
+            <li class="nav-item ms-3">
+              <a routerLink="/register" class="btn btn-color px-4">Inscription</a>
+            </li>
+          </ng-container>
 
-          <li class="nav-item">
-            <a class="nav-link fw-semibold text-color" href="#contact">
-              Contact
-            </a>
-          </li>
-
-          <li class="nav-item ms-3">
-            <a routerLink="/login" class="btn btn-color px-4">
-              Connexion
-            </a>
-          </li>
-
+          <ng-template #loggedInBlock>
+            <li class="nav-item ms-3">
+              <!-- Icône profil -->
+              <a routerLink="/profil" class="btn btn-outline-secondary px-3">
+                <i class="bi bi-person-circle"></i> Profil
+              </a>
+            </li>
+            <li class="nav-item ms-3">
+              <!-- Bouton déconnexion -->
+              <button class="btn btn-custom px-4" (click)="logout()">Déconnexion</button>
+            </li>
+          </ng-template>
         </ul>
-
       </div>
-
     </div>
-
-    <!-- Menu Mobile -->
-    <div *ngIf="isMenuOpen" class="bg-white shadow d-lg-none">
-
-      <ul class="list-unstyled text-center py-3 mb-0">
-
-        <li class="py-2">
-          <a href="#services" class="text-decoration-none fw-semibold text-color" (click)="toggleMenu()">
-            Services
-          </a>
-        </li>
-
-        <li class="py-2">
-          <a href="#horaires" class="text-decoration-none fw-semibold text-color" (click)="toggleMenu()">
-            Horaires
-          </a>
-        </li>
-
-        <li class="py-2">
-          <a href="#contact" class="text-decoration-none fw-semibold text-color" (click)="toggleMenu()">
-            Contact
-          </a>
-        </li>
-
-        <li class="mt-3">
-          <a routerLink="/login" class="btn btn-color px-4" (click)="toggleMenu()">
-            Connexion
-          </a>
-        </li>
-
-      </ul>
-
-    </div>
-
   </nav>
 
   <!-- Hero -->
