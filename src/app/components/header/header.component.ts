@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   constructor(private tokenService: TokenService, private router: Router) { }
+  
   ngOnInit(): void {
     this.checkLogin();
   }

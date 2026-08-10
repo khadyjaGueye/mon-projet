@@ -31,4 +31,19 @@ export class UtilsService {
       timer: 1500
     });
   }
+
+  confirm(title: string,text: string ): Promise<boolean> {
+    return Swal.fire({
+      title: title,
+      text: text,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, supprimer',
+      cancelButtonText: 'Annuler',
+      reverseButtons: true
+    }).then((result) => {
+      return result.isConfirmed;
+    });
+
+  }
 }

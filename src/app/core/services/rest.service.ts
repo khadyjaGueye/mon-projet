@@ -20,7 +20,7 @@ export class RestService<T> {
     return this.http.post<Model<Data>>(`${this.url}`,data);
   }
 
-  show(id:string):Observable<Model<Data>>{
+  show(id:number):Observable<Model<Data>>{
     return this.http.get<Model<Data>>(`${this.url}/${id}`);
   }
 

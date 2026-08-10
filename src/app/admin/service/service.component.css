@@ -13,7 +13,6 @@
     border: 2px solid var(--primary-color);
   }
   
-  
   .btn-color {
     background: var(--primary-color);
     color: var(--white-color);
@@ -46,5 +45,35 @@
     align-items: center;
     justify-content: center;
     z-index: 9999; /* au-dessus de tout */
+  }
+  
+  .modal {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal.show {
+    display: block !important;
+  }
+  
+  .modal-backdrop {
+    z-index: 1040;
+  }
+  
+  .modal {
+    z-index: 1050;
+  }
+  
+  .service-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .preview-image {
+    max-width: 250px;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
   }
   

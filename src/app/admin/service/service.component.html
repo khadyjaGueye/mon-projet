@@ -1,98 +1,157 @@
-<!-- Loader global -->
-<div *ngIf="isLoading" class="global-loader">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Chargement...</span>
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">Gestion des services </h2>
+            <p class="text-muted mb-0">Gérez les services proposés par votre établissement.</p>
+        </div>
+        <!-- Bouton Ajouter -->
+        <button type="button" class="btn btn-color px-4" (click)="openModal()">
+            <i class="bi bi-plus me-1"></i> Ajouter
+        </button>
     </div>
-  </div>
-  
-  <div class="container-fluid mt-4">
-      <div class="d-flex justify-content-end">
-          <button class="btn btn-color" data-bs-toggle="modal" data-bs-target="#addServiceModal" >
-              <i class="bi bi-plus"></i> Ajouter
-          </button>
-      </div>
-  </div>
-  
-  <!-- Tableau Produits -->
-  <div class="card mt-5 shadow-sm">
-      <div class="card-header">Liste des services </div>
-      <div class="card-body">
-          <table class="table table-hover align-middle">
-              <thead>
-                  <tr>
-                      <th>Id</th>
-                      <th>Image</th>
-                      <th>Libellé</th>
-                      <th>Prix</th>
-                      <th>Stock</th>
-                      <th colspan="3">Action</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr *ngFor="let service of services">
-                      <td>{{ service.id }}</td>
-                      <td><img [src]="service.image" width="40" height="40" class="img-thumbnail"></td>
-                      <td>{{ service.name }}</td>
-                      <td>{{ service.price }}</td>
-                      <td>{{ service.description }}</td>
-                      <td><i (click)="deleteService(service.id)" class="bi bi-trash-fill text-danger"></i></td>
-                      <td><i (click)="openModalService(service.id)" class="bi bi-pencil-square text-primary"
-                              data-bs-toggle="modal" data-bs-target="#productModalEdit"></i></td>
-                      <td><i (click)="showService(service.id)" class="bi bi-eye-fill text-success" data-bs-toggle="modal"
-                              data-bs-target="#productModal"></i></td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-  </div>
-  
 
-  <!-- Modale ajout product-->
-<div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <!-- Header -->
-            <div class="modal-header">
-                <h5 class="modal-title" id="addServiceLabel">Ajouter un service</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+    <div class="card border-0 shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Duree</th>
+                            <th>Description</th>
+                            <th>Prix</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let service of services; let i = index">
+                            <td>{{ i + 1 }} </td>
+                            <td>
+                                <img *ngIf="service.image" [src]="service.image" alt="Image du service"
+                                    class="service-image">
+                                <span *ngIf="!service.image" class="text-muted">Aucune image </span>
+                            </td>
+                            <td> <strong> {{ service.name }} </strong> </td>
+                            <td> <strong> {{ service.duration }} </strong> </td>
+                            <td> {{ service.description }} </td>
+                            <td> {{ service.price }} FCFA </td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-primary me-2"
+                                    (click)="openModalServiceUpdate(service.id)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                    (click)="deleteService(service.id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Aucun service -->
+                        <tr *ngIf="!services || services.length === 0">
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                Aucun service disponible.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <!-- Form -->
-            <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="Name" class="form-label">Nom du service</label>
-                        <input type="text" formControlName="name" class="form-control" id="Name"
-                            placeholder="Entrez le nom du service">
-                    </div>
-                    <div class="mb-3">
-                        <label for="Price" class="form-label">Prix</label>
-                        <input type="number" formControlName="price" class="form-control" id="tPrice"
-                            placeholder="Entrez le prix">
-                    </div>
-    
-                    <div class="mb-3">
-                        <label for="Description" class="form-label">Description</label>
-                        <input type="text" formControlName="description" class="form-control" id="Description"
-                            placeholder="Entrez la description">
-                    </div>
-                    <div class="mb-3">
-                        <label for="Image" class="form-label">Image</label>
-                        <input type="file" (change)="onFileSelected($event)" formControlName="image"
-                            class="form-control" id="Image">
-                    </div>
-                </div>
-                <!-- Footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button type="submit" class="btn btn-color" [disabled]="isSubmitting">
-                        <span *ngIf="!isSubmitting">Enregistrer</span>
-                        <span *ngIf="isSubmitting">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            Enregistrement...
-                        </span>
+        </div>
+    </div>
+
+    <!-- MODAL AJOUTER / MODIFIER -->
+    <div class="modal fade" [class.show]="showModal" [style.display]="showModal ? 'block' : 'none'" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">
+                        {{ editingService ? 'Modifier le service' : 'Ajouter un service' }}
+                    </h5>
+                    <button type="button" class="btn-close" aria-label="Fermer" (click)="closeModal()">
                     </button>
                 </div>
-            </form>
+                <!-- Formulaire -->
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <!-- Body -->
+                    <div class="modal-body">
+                        <!-- Nom -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-semibold"> Nom du service </label>
+                            <input type="text" id="name" class="form-control" formControlName="name"
+                                placeholder="Entrez le nom du service">
+                            <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+                                class="text-danger small mt-1">
+                                Le nom du service est obligatoire.
+                            </div>
+                        </div>
+                           <!-- Duree -->
+                           <div class="mb-3">
+                            <label for="duration" class="form-label fw-semibold"> Duree </label>
+                            <input type="number" id="duration" class="form-control" formControlduration="duration"
+                                placeholder="Entrez la duree du service">
+                            <div *ngIf="form.get('duration')?.invalid && form.get('duration')?.touched"
+                                class="text-danger small mt-1">
+                               La duree du service est obligatoire.
+                            </div>
+                        </div>
+                        <!-- Prix -->
+                        <div class="mb-3">
+                            <label for="price" class="form-label fw-semibold">Prix</label>
+                            <div class="input-group">
+                                <input type="number" id="price" class="form-control" formControlName="price"
+                                    placeholder="Entrez le prix">
+                                <span class="input-group-text"> FCFA</span>
+                            </div>
+                            <div *ngIf="form.get('price')?.invalid && form.get('price')?.touched"
+                                class="text-danger small mt-1">
+                                Le prix est obligatoire.
+                            </div>
+                        </div>
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label for="Description" class="form-label fw-semibold"> Description </label>
+                            <textarea id="Description" formControlName="description" class="form-control" rows="4"
+                                placeholder="Entrez la description"></textarea>
+                        </div>
+                        <!-- Image -->
+                        <div class="mb-3">
+                            <label for="Image" class="form-label fw-semibold"> Image </label>
+                            <input type="file" (change)="onFileSelected($event)" class="form-control" id="Image"
+                                accept="image/*">
+                            <small class="text-muted"> Formats acceptés : JPG, JPEG, PNG, WEBP.</small>
+                        </div>
+                        <!-- Aperçu de l'image -->
+                        <div *ngIf="imagePreview" class="mt-3 text-center">
+                            <p class="fw-semibold mb-2"> Aperçu</p>
+                            <img [src]="imagePreview" alt="Aperçu" class="img-fluid rounded preview-image">
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    <div class="modal-footer">
+                        <!-- Annuler -->
+                        <button type="button" class="btn btn-secondary" (click)="closeModal()"> Annuler </button>
+                        <!-- Enregistrer -->
+                        <button type="submit" class="btn btn-color" [disabled]="isSubmitting">
+                            <span *ngIf="!isSubmitting">
+                                <i class="bi bi-check-lg me-1"></i>
+                                {{ editingService ? 'Modifier' : 'Enregistrer' }}
+                            </span>
+                            <span *ngIf="isSubmitting">
+                                <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true">
+                                </span>
+                                Enregistrement...
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
+    </div>
+    <!-- BACKDROP DU MODAL -->
+    <div *ngIf="showModal" class="modal-backdrop fade show">
     </div>
 </div>
