@@ -2,6 +2,10 @@
     color: var(--primary-color);
 }
 
+.bg-light-custom{
+    background: var(--background-color);
+}
+
 .navbar{
     padding: 15px 0;
 }
@@ -71,3 +75,11 @@
     }
 
 }
+
+.carousel-item {
+    pointer-events: none;
+  }
+  .carousel-item video {
+    pointer-events: auto;
+  }
+  

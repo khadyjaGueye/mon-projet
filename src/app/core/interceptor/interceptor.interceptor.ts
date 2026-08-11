@@ -13,7 +13,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     const token = localStorage.getItem('token');
 
     // 🔒 Routes protégées (nécessitent un token)
-    const protectedRoutes = ['/dashbord', '/profil','/service'];
+    const protectedRoutes = ['/dashbord', '/profil','/service','/video'];
 
     // 🔓 Routes publiques (pas besoin de token)
     const publicRoutes = ['/login', '/register', '/'];

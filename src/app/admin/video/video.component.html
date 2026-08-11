@@ -1,1 +1,57 @@
-<p>video works!</p>
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">Gestion des services </h2>
+            <p class="text-muted mb-0">Gérez les services proposés par votre établissement.</p>
+        </div>
+        <!-- Bouton Ajouter -->
+        <button type="button" class="btn btn-color px-4" (click)="openModal()">
+            <i class="bi bi-plus me-1"></i> Ajouter
+        </button>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <!-- <th>Url</th> -->
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let video of videos; let i = index">
+                            <td>{{ i + 1 }} </td>
+                            <td> <strong> {{ video.title }} </strong> </td>
+                            <!-- <td> <strong> {{ video.url }} </strong> </td> -->
+                            <td> {{ video.description }} </td>
+                            <td>{{ video.createdAt | date:'dd/MM/yyyy' }}</td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-primary me-2"
+                                    (click)="openModalVideoUpdate(video.id)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                    (click)="deleteVideo(video.id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Aucun video -->
+                        <tr *ngIf="!videos || videos.length === 0">
+                            <td colspan="6" class="text-center py-5 text-muted">
+                                <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                Aucun video disponible.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>

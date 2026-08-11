@@ -1,25 +1,40 @@
 <app-header></app-header>
-
 <!-- Hero -->
 <section class="hero d-flex align-items-center justify-content-center text-center">
-
     <div class="container">
-
-        <h1 class="display-4 fw-bold text-white">
-            Relaxation &amp; Bien-être
-        </h1>
-
+        <h1 class="display-4 fw-bold text-white"> Relaxation &amp; Bien-être </h1>
         <p class="lead text-white mt-3">
             Découvrez nos soins professionnels pour un moment de détente unique.
         </p>
-
-        <a href="#services" class="btn btn-light btn-lg mt-3">
-            Découvrir les services
-        </a>
-
+        <a href="#services" class="btn btn-light btn-lg mt-3"> Découvrir les services </a>
     </div>
-
 </section>
+
+<section id="services" class="py-5 bg-light-custom">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold text-color"> Nos Videos </h2>
+            <div class="row">
+                <div class="col-md-4" *ngFor="let video of videos">
+                  <div class="card mb-4 shadow-sm">
+                    <!-- ✅ Vidéo directement dans la card -->
+                    <video class="card-img-top" controls [attr.src]="video.url" style="height: 200px; object-fit: cover;">
+                    </video>
+                    <div class="card-body">
+                      <h5 class="card-title">{{ video.title }}</h5>
+                      <p class="card-text">{{ video.description }}</p>
+                      <p class="text-muted">Ajouté le {{ video.createdAt | date:'short' }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+
+
+        </div>
+    </div>
+</section>
+
 <app-section-service></app-section-service>
 <app-horaire></app-horaire>
 <app-contact></app-contact>

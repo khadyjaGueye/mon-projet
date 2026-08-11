@@ -5,31 +5,38 @@ export interface Model<T> {
 export interface Data {
     service: Service;
     services: Service[];
-    user:User
-    message:string;
-    token:string;
+    videos: Video[];
+    video: Video
+    user: User
+    message: string;
+    token: string;
 }
 
-export interface User{
-    id:number;
-    role:string;
-    image:string
+export interface User {
+    id: number;
+    role: string;
+    image: string
 }
 
 export interface Service {
-id :number;
-name:string;
-price:number;
-description:string;
-image:string;
-duration:number;
-created_at :string;
+    id: number;
+    name: string;
+    price: number;
+    description: string;
+    image: string;
+    duration: number;
+    created_at: string;
 }
 
-export interface Video{
-    id:number
+export interface Video {
+    id: number,
+    title: string;
+    description: string;
+    url: string;
+    createdAt:string;
 }
 
-export interface Horaire{
-    id:number;
+export interface Horaire {
+    id: number;
+
 }
