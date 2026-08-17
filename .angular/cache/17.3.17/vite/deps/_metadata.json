@@ -1,55 +1,55 @@
 {
-  "hash": "d81252c9",
+  "hash": "259d97ba",
   "configHash": "00e6543f",
-  "lockfileHash": "b56b8fb7",
-  "browserHash": "7d6dbf83",
+  "lockfileHash": "684ab8be",
+  "browserHash": "4ceb71e3",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "5a38485d",
+      "fileHash": "d701db1f",
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
-      "fileHash": "f25006ed",
+      "fileHash": "9eb5ae7e",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "07642da3",
+      "fileHash": "f7c8de6e",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "71469065",
+      "fileHash": "0e3559d7",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "90bba8b4",
+      "fileHash": "8bdd0b76",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "c3ff5f40",
+      "fileHash": "1ceb9e18",
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
       "file": "rxjs.js",
-      "fileHash": "bdfba8a3",
+      "fileHash": "4ddade24",
       "needsInterop": false
     },
     "sweetalert2": {
       "src": "../../../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js",
       "file": "sweetalert2.js",
-      "fileHash": "5b015872",
+      "fileHash": "19d1546f",
       "needsInterop": false
     }
   },

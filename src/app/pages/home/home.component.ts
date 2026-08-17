@@ -36,8 +36,7 @@ export class HomeComponent implements OnInit {
     this.service.all().subscribe({
       next: (res: Model<Data>) => {
         this.videos = res.data.videos;
-        console.log(this.videos);
-        
+        //console.log(this.videos);
       },
       error: (error: HttpErrorResponse) => {
         const result = this.utilsService.parseResponse(error);

@@ -16,21 +16,19 @@
             <h2 class="display-6 fw-bold text-color"> Nos Videos </h2>
             <div class="row">
                 <div class="col-md-4" *ngFor="let video of videos">
-                  <div class="card mb-4 shadow-sm">
-                    <!-- ✅ Vidéo directement dans la card -->
-                    <video class="card-img-top" controls [attr.src]="video.url" style="height: 200px; object-fit: cover;">
-                    </video>
-                    <div class="card-body">
-                      <h5 class="card-title">{{ video.title }}</h5>
-                      <p class="card-text">{{ video.description }}</p>
-                      <p class="text-muted">Ajouté le {{ video.createdAt | date:'short' }}</p>
+                    <div class="card mb-4 shadow-sm">
+                        <!--  Vidéo directement dans la card -->
+                        <video class="card-img-top" controls [attr.src]="video.url"
+                            style="height: 200px; object-fit: cover;">
+                        </video>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ video.title }}</h5>
+                            <p class="card-text">{{ video.description }}</p>
+                            <p class="text-muted">Ajouté le {{ video.createdAt | date:'short' }}</p>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              
-
-
+            </div>
         </div>
     </div>
 </section>

@@ -20,7 +20,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
     let authReq = req;
 
-    // ✅ Ajouter le token uniquement si la route est protégée
+    // Ajouter le token uniquement si la route est protégée
     if (token && protectedRoutes.some(route => req.url.includes(route))) {
       authReq = req.clone({
         setHeaders: { Authorization: `Bearer ${token}` }
