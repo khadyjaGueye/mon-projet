@@ -8,12 +8,14 @@ import { HttpClient } from '@angular/common/http';
 export class TokenService {
 
   private readonly TOKEN_KEY = 'token';
+
   baseUrlUserAdmin = `${environment.apiUrlNode}users/current`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private isBrowser(): boolean {
-    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+    return typeof window !== 'undefined' &&
+           typeof localStorage !== 'undefined';
   }
 
   saveToken(token: string): void {
@@ -26,6 +28,7 @@ export class TokenService {
     if (this.isBrowser()) {
       return localStorage.getItem(this.TOKEN_KEY);
     }
+
     return null;
   }
 
@@ -35,31 +38,62 @@ export class TokenService {
     }
   }
 
-  // ✅ Vérifie si le token est encore valide
   isTokenExpired(token: string | null): boolean {
-    if (!token) return true;
+
+    if (!token) {
+      return true;
+    }
 
     try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      const payload = JSON.parse(
+        atob(token.split('.')[1])
+      );
+
       const expiry = payload.exp;
+
+      if (!expiry) {
+        return true;
+      }
+
       const now = Math.floor(Date.now() / 1000);
-      return expiry < now; // true si expiré
-    } catch (e) {
-      return true; // si erreur de parsing, considère comme expiré
+
+      return expiry <= now;
+
+    } catch (error) {
+
+      console.error('❌ Token invalide :', error);
+
+      return true;
     }
   }
 
   isLoggedIn(): boolean {
+
     const token = this.getToken();
-    return !!token && !this.isTokenExpired(token);
+
+    if (!token) {
+      return false;
+    }
+
+    return !this.isTokenExpired(token);
   }
 
   getCurrentUser() {
-    return this.http.get<any>(this.baseUrlUserAdmin, {
-      headers: {
-        Authorization: `Bearer ${this.getToken()}`
-      }
-    });
-  }
 
+    const token = this.getToken();
+
+    if (!token) {
+      throw new Error('Aucun token trouvé');
+    }
+
+    return this.http.get<any>(
+      this.baseUrlUserAdmin,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+  }
 }

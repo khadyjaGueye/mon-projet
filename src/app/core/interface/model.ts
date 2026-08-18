@@ -34,6 +34,7 @@ export interface Video {
     description: string;
     url: string;
     createdAt:string;
+    video:string;
 }
 
 export interface Horaire {
